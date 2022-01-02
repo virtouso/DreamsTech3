@@ -3,7 +3,15 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
-# Add source to this project's executable.
+ find_package(ImGui-SFML CONFIG REQUIRED)
+ find_package(ImGui CONFIG REQUIRED)
+  find_package(SFML COMPONENTS system window graphics CONFIG REQUIRED)
+
+
 add_executable (DreamsTech3Engine "DreamsTech3Engine.cpp" "DreamsTech3Engine.h")
 
-# TODO: Add tests and install targets if needed.
+   target_link_libraries(DreamsTech3Engine PRIVATE
+   ImGui-SFML::ImGui-SFML
+   imgui::imgui
+   sfml-system sfml-network sfml-graphics sfml-window
+   )
