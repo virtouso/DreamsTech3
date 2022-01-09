@@ -1,7 +1,7 @@
 #include "EditorManager.h"
 #include "../Elements/InspectorWindow/InspectorWindow.h"
 #include "../Elements/TopBar/TopBar.h"
-#include "../Elements/EditBar/EditBar.h"
+#include "../Elements/ToolBar/ToolBar.h"
 
 EditorManager::EditorManager()
 {
@@ -13,7 +13,7 @@ EditorManager::EditorManager()
 	TopBar* topBar = new TopBar();
 	EditorManager::MainElements->emplace_back(topBar);
 
-	EditBar* editBar = new EditBar();
+	ToolBar* editBar = new ToolBar();
 	EditorManager::MainElements->emplace_back(editBar);
 
 }

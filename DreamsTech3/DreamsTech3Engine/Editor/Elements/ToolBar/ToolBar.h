@@ -2,11 +2,11 @@
 
 #include "../Base/IEditorElement.h"
 
-class EditBar : public  IEditorElement  {
+class ToolBar : public  IEditorElement  {
 
 public:
-	EditBar();
-	~EditBar();
+	ToolBar();
+	~ToolBar();
 
 	void Show() override;
 

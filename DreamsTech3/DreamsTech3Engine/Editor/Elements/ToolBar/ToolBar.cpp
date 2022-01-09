@@ -1,35 +1,33 @@
-#include "EditBar.h"
-
+#include "ToolBar.h"
 #include <iostream>
 #include "imgui.h"
 #include "imgui-SFML.h"
 #include "SFML/Graphics/Sprite.hpp"
 #include "SFML/Graphics/Texture.hpp"
-
+#include "../../EditorSettings/EditorSettings.h"
 
 static sf::Texture* _playIconTexture;
 static sf::Texture* _stopIconTexture;
 static sf::Sprite* _currentPlayStateSprite;
 
 
-EditBar::EditBar()
+ToolBar::ToolBar()
 {
 	_playIconTexture = new sf::Texture();
 	_playIconTexture->loadFromFile("Icons/small/_Help.png");
 
 }
-EditBar::~EditBar()
+ToolBar::~ToolBar()
 {
 	delete _playIconTexture;
 	delete _stopIconTexture;
 	delete _currentPlayStateSprite;
 }
 
-void EditBar::Show()
+void ToolBar::Show()
 {
-//	ImGui::DrawRectFilled(sf::FloatRect(0,10,ImGui::GetWindowWidth(),10 ),sf::Color::Blue );
-	//ImGui::DrawRect(sf::FloatRect(0, 10, ImGui::GetWindowWidth(), 10), sf::Color::Blue);
+
 	ImGui::Begin("Controlls");
-	ImGui::ImageButton(*_playIconTexture);
+	ImGui::ImageButton(*_playIconTexture,sf::Vector2f(EditorSettings::ToolBarIconsWidth,EditorSettings::ToolBarIconsHeight));
 	ImGui::End();
 }
