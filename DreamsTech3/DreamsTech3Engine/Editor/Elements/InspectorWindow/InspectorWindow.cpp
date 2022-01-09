@@ -6,6 +6,6 @@
 
 void  InspectorWindow::Show() {
 
-	std::cout << "Inspector Window Shown";
+	
 
 }

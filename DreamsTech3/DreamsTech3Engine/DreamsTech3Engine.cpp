@@ -35,14 +35,14 @@ int main()
 		}
 
 		ImGui::SFML::Update(window, deltaClock.restart());
-		ImGui::Begin("Hello, world!");
+	//	ImGui::Begin("Hello, world!");
 	/*	if (ImGui::Button("Look at this pretty button"))
 		{
 			std::cout << "button pressed";
 		}*/
 		editorManager.Show();
 
-		ImGui::End();
+	//	ImGui::End();
 
 		window.clear();
 	//	window.draw(shape);

@@ -15,6 +15,7 @@ void TopBar::Show() {
     if (ImGui::BeginMainMenuBar())
     {
         
+        
         ShowFileBar();
         
         ShowSettings();
