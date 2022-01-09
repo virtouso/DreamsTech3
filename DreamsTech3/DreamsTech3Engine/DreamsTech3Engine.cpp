@@ -9,12 +9,15 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/System/Clock.hpp>
 #include <SFML/Window/Event.hpp>
+#include "Settings/GeneralSettings.h"
+
 
 int main()
 {
 
-    sf::RenderWindow window(sf::VideoMode(640, 480), "ImGui + SFML = <3");
-    window.setFramerateLimit(60);
+    
+    sf::RenderWindow window(sf::VideoMode(GeneralSettings::WindowSize.x, GeneralSettings::WindowSize.y), "ImGui + SFML = <3");
+    window.setFramerateLimit(GeneralSettings::FrameRate);
     ImGui::SFML::Init(window);
 
     sf::CircleShape shape(100.f);
