@@ -4,48 +4,52 @@
 #include "DreamsTech3Engine.h"
 #include "imgui.h"
 #include "imgui-SFML.h"
-
 #include <SFML/Graphics/CircleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/System/Clock.hpp>
 #include <SFML/Window/Event.hpp>
 #include "Settings/GeneralSettings.h"
-
+#include "../DreamsTech3Engine/Editor/Manager/EditorManager.h"
 
 int main()
 {
 
-    
-    sf::RenderWindow window(sf::VideoMode(GeneralSettings::WindowSize.x, GeneralSettings::WindowSize.y), "ImGui + SFML = <3");
-    window.setFramerateLimit(GeneralSettings::FrameRate);
-    ImGui::SFML::Init(window);
+	EditorManager editorManager = EditorManager();
 
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+	sf::RenderWindow window(sf::VideoMode(GeneralSettings::WindowSize.x, GeneralSettings::WindowSize.y), "ImGui + SFML = <3");
+	window.setFramerateLimit(GeneralSettings::FrameRate);
+	ImGui::SFML::Init(window);
 
-    sf::Clock deltaClock;
-    while (window.isOpen()) {
-        sf::Event event;
-        while (window.pollEvent(event)) {
-            ImGui::SFML::ProcessEvent(window, event);
+	//   sf::CircleShape shape(100.f);
+	//   shape.setFillColor(sf::Color::Green);
 
-            if (event.type == sf::Event::Closed) {
-                window.close();
-            }
-        }
+	sf::Clock deltaClock;
+	while (window.isOpen()) {
+		sf::Event event;
+		while (window.pollEvent(event)) {
+			ImGui::SFML::ProcessEvent(window, event);
 
-        ImGui::SFML::Update(window, deltaClock.restart());
+			if (event.type == sf::Event::Closed) {
+				window.close();
+			}
+		}
 
-        ImGui::Begin("Hello, world!");
-        ImGui::Button("Look at this pretty button");
-        ImGui::End();
+		ImGui::SFML::Update(window, deltaClock.restart());
+		ImGui::Begin("Hello, world!");
+	/*	if (ImGui::Button("Look at this pretty button"))
+		{
+			std::cout << "button pressed";
+		}*/
+		editorManager.Show();
 
-        window.clear();
-        window.draw(shape);
-        ImGui::SFML::Render(window);
-        window.display();
-    }
+		ImGui::End();
 
-    ImGui::SFML::Shutdown();
+		window.clear();
+	//	window.draw(shape);
+		ImGui::SFML::Render(window);
+		window.display();
+	}
+
+	ImGui::SFML::Shutdown();
 	return 0;
 }
