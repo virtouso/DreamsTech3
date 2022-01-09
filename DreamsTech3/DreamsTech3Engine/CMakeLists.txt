@@ -8,7 +8,7 @@ cmake_minimum_required (VERSION 3.8)
   find_package(SFML COMPONENTS system window graphics CONFIG REQUIRED)
 
 
-add_executable (DreamsTech3Engine "DreamsTech3Engine.cpp" "DreamsTech3Engine.h"  "Settings/GeneralSettings.h" "Settings/GeneralSettings.cpp"  "Editor/Manager/EditorManager.h" "Editor/Manager/EditorManager.cpp" "Editor/Elements/InspectorWindow/InspectorWindow.cpp" "Editor/Elements/InspectorWindow/InspectorWindow.h")
+add_executable (DreamsTech3Engine "DreamsTech3Engine.cpp" "DreamsTech3Engine.h"  "Settings/GeneralSettings.h" "Settings/GeneralSettings.cpp"  "Editor/Manager/EditorManager.h" "Editor/Manager/EditorManager.cpp" "Editor/Elements/InspectorWindow/InspectorWindow.cpp" "Editor/Elements/InspectorWindow/InspectorWindow.h" "Editor/Elements/TopBar/TopBar.h" "Editor/Elements/TopBar/TopBar.cpp")
 
    target_link_libraries(DreamsTech3Engine PRIVATE
    ImGui-SFML::ImGui-SFML
