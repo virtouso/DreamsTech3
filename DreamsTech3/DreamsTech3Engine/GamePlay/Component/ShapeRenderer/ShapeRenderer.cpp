@@ -1,5 +1,5 @@
 #include "ShapeRenderer.h"
-
+#include "../../../Global/GlobalObjects.h"
 #include <string>
 
 
@@ -16,12 +16,12 @@ const std::string  ShapeRenderer::Name = "ShapeRenderer";
  {
 	 _circleShape->setFillColor(sf::Color::Transparent);
 	 _circleShape->setOutlineColor(sf::Color::Black);
-
+	 _circleShape->setPosition(100, 100);
  }
 
 void ShapeRenderer::Update()
 {
-	
+	GlobalObjects
 }
 
 ShapeRenderer::~ShapeRenderer()
