@@ -4,13 +4,14 @@
 #include "DreamsTech3Engine.h"
 #include "imgui.h"
 #include "imgui-SFML.h"
+#include "imgui_internal.h"
 #include <SFML/Graphics/CircleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/System/Clock.hpp>
 #include <SFML/Window/Event.hpp>
 #include "Settings/GeneralSettings.h"
 #include "../DreamsTech3Engine/Editor/Manager/EditorManager.h"
-
+#include "GamePlay/Entity/Object.h" 
 int main()
 {
 
@@ -19,10 +20,10 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(GeneralSettings::WindowSize.x, GeneralSettings::WindowSize.y), "ImGui + SFML = <3");
 	window.setFramerateLimit(GeneralSettings::FrameRate);
 	ImGui::SFML::Init(window);
-
+	ImGui::GetIO().ConfigFlags |= 128;
 	//   sf::CircleShape shape(100.f);
 	//   shape.setFillColor(sf::Color::Green);
-
+	Object *obj = new Object("Name");
 	sf::Clock deltaClock;
 	while (window.isOpen()) {
 		sf::Event event;
@@ -35,14 +36,10 @@ int main()
 		}
 
 		ImGui::SFML::Update(window, deltaClock.restart());
-	//	ImGui::Begin("Hello, world!");
-	/*	if (ImGui::Button("Look at this pretty button"))
-		{
-			std::cout << "button pressed";
-		}*/
+	
 		editorManager.Show();
 
-	//	ImGui::End();
+
 
 		window.clear();
 	//	window.draw(shape);
