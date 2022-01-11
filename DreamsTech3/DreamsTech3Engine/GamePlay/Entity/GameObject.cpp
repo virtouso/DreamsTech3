@@ -1,12 +1,16 @@
 #include "GameObject.h"
 #include "../../EngineState/Manager/EngineStateManager.h"
+#include "../Component/Base/Component.h"
+#include "../../GamePlay/Component/Transform/Transform.h"
+
 GameObject::GameObject(char* name):Object(name)
 {
-	
+	_transform = new  Transform();
 }
 
 GameObject::~GameObject()
 {
+	delete _transform;
 	for (auto item: _components)
 	{
 		delete item;

@@ -3,12 +3,12 @@
 #include <SFML/Graphics/CircleShape.hpp>
 
 #include "../Base/Component.h"
-
+#include "../../Entity/GameObject.fwd.h"
 
 class ShapeRenderer :public Component
 {
 public:
-	ShapeRenderer();
+	ShapeRenderer(GameObject& gameObject);
 	~ShapeRenderer() override;
 
 	void Update() override;

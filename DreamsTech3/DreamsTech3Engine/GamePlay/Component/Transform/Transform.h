@@ -1,3 +1,4 @@
+#pragma once
 #include "../../Component/Base/Component.h"
 #include "imgui-SFML.h"
 
