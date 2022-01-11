@@ -3,6 +3,7 @@
 #include <iostream>
 #include "imgui.h"
 #include "imgui-SFML.h"
+#include "Create/TopBarCreateFunctions.h"
 
 void ShowFileBar();
 void ShowSettings();
@@ -73,15 +74,13 @@ void ShowGameObjects()
     if (ImGui::BeginMenu("Create"))
     {
 
-        if (ImGui::MenuItem("Square"))
+        if (ImGui::MenuItem("Circle Shape"))
         {
+            std::cout << "circle shape called" << "\n";
+            TopBarCreateFunctions::getInstance().CreateDefaultShapeRendererObject();
+
         }
-        if (ImGui::MenuItem("Circle"))
-        {
-        }
-        if (ImGui::MenuItem("Triangle"))
-        {
-        }
+    
         ImGui::EndMenu();
     }
 }

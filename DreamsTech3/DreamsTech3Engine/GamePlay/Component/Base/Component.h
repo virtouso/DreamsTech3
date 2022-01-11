@@ -9,11 +9,12 @@ class Component
 public:
 	virtual std::string GetName() = 0;
 	virtual void Update() = 0;
+	virtual void DisplayInspector();
 	 Component(GameObject& parentGameObject);
 
 	virtual ~Component() = 0;
 
-private:
+protected:
 	GameObject& _parentGameObject;
 
 };

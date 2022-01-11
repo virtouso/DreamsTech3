@@ -1,17 +1,21 @@
 #include "GameObject.h"
+
+#include <iostream>
+
 #include "../../EngineState/Manager/EngineStateManager.h"
 #include "../Component/Base/Component.h"
 #include "../../GamePlay/Component/Transform/Transform.h"
+#include "../../GamePlay/Component/Base/Component.h"
 
-GameObject::GameObject(char* name):Object(name)
+GameObject::GameObject(char* name) :Object(name), _transform(new Transform(*this))
 {
-	_transform = new  Transform();
+	
 }
 
 GameObject::~GameObject()
 {
 	delete _transform;
-	for (auto item: _components)
+	for (auto item : _components)
 	{
 		delete item;
 	}
@@ -19,11 +23,11 @@ GameObject::~GameObject()
 
 
 
-template <typename T>
-Component* GameObject::AddComponent(T* component)
+
+void GameObject::AddComponent(Component* component)
 {
 	_components.emplace_back(component);
-	return component;
+
 }
 
 
@@ -38,6 +42,12 @@ Component* GameObject::GetComponent(T component)
 	}
 	return nullptr;
 }
+
+std::vector<Component*> GameObject::GetComponents()
+{
+	return _components;
+}
+
 
 
 template <typename T>
@@ -68,9 +78,16 @@ bool GameObject::RemoveComponent(T component)
 }
 
 
+Transform* GameObject::GetTransform() const
+{
+	return _transform;
+}
+
+
 
 void GameObject::Update()
 {
+
 	for (auto t : _components)
 	{
 		if (t != nullptr)

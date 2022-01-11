@@ -14,9 +14,13 @@ public:
 
 
 	void Update() override;
-	template<typename T> Component* AddComponent(T* component);
+	Transform* GetTransform() const;
+
+	void AddComponent(Component* component);
 	template<typename T> bool RemoveComponent(T component);
 	template<typename T> Component* GetComponent(T component);
+	std::vector<Component*> GetComponents();
+
 	template<typename T> GameObject* FindGameObjectWithType(T component);
 	template<typename T> GameObject* FindGameObject(char* objectName);
 

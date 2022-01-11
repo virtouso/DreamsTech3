@@ -1,4 +1,7 @@
 #include "ShapeRenderer.h"
+
+#include <iostream>
+
 #include "../../../Global/GlobalObjects.h"
 #include <string>
 #include <SFML/Graphics/RenderWindow.hpp>
@@ -13,15 +16,18 @@ std::string ShapeRenderer::GetName()
 }
 
 ShapeRenderer::ShapeRenderer(GameObject& gameObject) : Component(gameObject), _radius(10), _sides(5),
-                                 _circleShape(new sf::CircleShape(_radius))
+_circleShape(new sf::CircleShape(_radius))
 {
-	_circleShape->setFillColor(sf::Color::Transparent);
-	_circleShape->setOutlineColor(sf::Color::Black);
-	_circleShape->setPosition(100, 100);
+	_circleShape->setFillColor(sf::Color::Red);
+	_circleShape->setOutlineColor(sf::Color::Blue);
+	_circleShape->setOutlineThickness(10);
+	_circleShape->setRadius(100);
+	_circleShape->setPosition(_parentGameObject.GetTransform()->GetPosition().x, _parentGameObject.GetTransform()->GetPosition().y);
 }
 
 void ShapeRenderer::Update()
 {
+	
 	GlobalObjects::window->draw(*_circleShape);
 }
 

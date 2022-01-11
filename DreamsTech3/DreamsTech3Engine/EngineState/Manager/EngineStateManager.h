@@ -5,16 +5,23 @@ class GameObject;
 class EngineStateManager
 {
 public:
-    static EngineStateManager& getInstance()
+    static EngineStateManager* getInstance()
     {
-        static EngineStateManager    instance;
+        if (_instance == nullptr)
+            _instance = new EngineStateManager();
 
-        return instance;
+        return _instance;
     }
 
 
 
     GameObject* FindGameObject(char* objectName);
+    void AddObjectToScene(GameObject* gameObject);
+    void RunUpdateAllSceneObjects();
+public:
+    GameObject* GetSelectedObject() const;
+    void SetSelectedObject(const GameObject& gameObject);
+
 
 
    void ChangeEngineMode();
@@ -22,7 +29,7 @@ public:
 
 private:
     EngineStateManager() {}
-
+    static EngineStateManager*    _instance;
 
 public:
     EngineStateManager(EngineStateManager const&) = delete;

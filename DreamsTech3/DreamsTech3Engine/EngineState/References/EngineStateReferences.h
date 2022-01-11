@@ -7,28 +7,39 @@
 class EngineStateReferences
 {
 public:
-    static EngineStateReferences& getInstance()
+    static EngineStateReferences* getInstance()
     {
-        static EngineStateReferences    instance;
+        if (_instance == nullptr)
+            _instance = new EngineStateReferences();
 
-        return instance;
+        return _instance;
     }
 
 
-
-private:
-	std::vector<GameObject*> _sceneObjects;
-    EngineModes _currentEngineMode;
-
-private:
-    EngineStateReferences() {}
-
-
-public:
     EngineStateReferences(EngineStateReferences const&) = delete;
     void operator=(EngineStateReferences const&) = delete;
 
     friend class EngineStateManager;
+
+private:
+    EngineStateReferences(): _selectedObject(NULL)
+    {
+    }
+
+
+private:
+    GameObject _selectedObject;
+	std::vector<GameObject*> _sceneObjects;
+    EngineModes _currentEngineMode;
+
+    static EngineStateReferences    *_instance;
+
+
+
+
+
+
+
 };
 
 

@@ -13,6 +13,7 @@
 #include "../DreamsTech3Engine/Editor/Manager/EditorManager.h"
 #include "GamePlay/Entity/Object.h"
 #include "Global/GlobalObjects.h"
+#include "EngineState/Manager/EngineStateManager.h"
 
 int main()
 {
@@ -44,7 +45,9 @@ int main()
 
 
 		GlobalObjects::window->clear();
-		//	window.draw(shape);
+
+		EngineStateManager::getInstance()->RunUpdateAllSceneObjects();
+
 		ImGui::SFML::Render(*GlobalObjects::window);
 		GlobalObjects::window->display();
 	}
