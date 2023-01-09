@@ -1,4 +1,0 @@
-enum Shapes{
-Square,
-Circle
-}
