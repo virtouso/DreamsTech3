@@ -2,6 +2,9 @@
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_video.h>
 
+const int FPS = 60;
+const int MILLISECONDS_PER_FRAME = 1000 / FPS;
+
 namespace Main
 {
     class Game
@@ -10,6 +13,7 @@ namespace Main
         SDL_Window* _window;
         SDL_Renderer* _renderer;
         bool _isRunning;
+        int _milliscondsPreviousFrame;
 
     public:
         Game();

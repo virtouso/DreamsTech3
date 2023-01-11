@@ -85,6 +85,19 @@ void Main::Game::ProcessInput()
 
 void Main::Game::Update()
 {
+    //ADD SOME DELAY
+    //      while (!SDL_TICKS_PASSED(SDL_GetTicks(),_milliscondsPreviousFrame+MILLISECONDS_PER_FRAME));
+    int timeToWait = MILLISECONDS_PER_FRAME - (SDL_GetTicks() - _milliscondsPreviousFrame);
+
+    if (timeToWait > 0 && timeToWait <= MILLISECONDS_PER_FRAME)
+    {
+        SDL_Delay(timeToWait);
+    }
+
+    double deltaTime = (SDL_GetTicks() - _milliscondsPreviousFrame) / 100;
+
+
+    _milliscondsPreviousFrame = SDL_GetTicks();
 }
 
 void Main::Game::Render()
