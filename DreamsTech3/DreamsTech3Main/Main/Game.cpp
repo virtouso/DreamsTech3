@@ -3,15 +3,19 @@
 #include <iostream>
 #include<SDL2/SDL.h>
 
+#include "../Logging/Logger.h"
+
 
 Main::Game::Game()
 {
-    std::cout << "Game Constructor" << std::endl;
+    //std::cout << "Game Constructor" << std::endl;
+    Logging::Logger::Log("game constructor");
 }
 
 Main::Game::~Game()
 {
-    std::cout << "Game Distructor" << std::endl;
+    //std::cout << "Game Distructor" << std::endl;
+    Logging::Logger::Log("game destructor");
 }
 
 
@@ -37,14 +41,16 @@ void Main::Game::Initialize()
 
     if (!_window)
     {
-        std::cerr << "error making the window" << std::endl;
+        //std::cerr << "error making the window" << std::endl;
+        Logging::Logger::Log("make  the window");
         return;
     }
 
     _renderer = SDL_CreateRenderer(_window, -1, 0);
     if (!_renderer)
     {
-        std::cerr << "err create renderer";
+     //   std::cerr << "err create renderer";
+        Logging::Logger::Log("error make renderer");
         return;
     }
 
@@ -112,5 +118,6 @@ void Main::Game::Destroy()
     SDL_DestroyRenderer(_renderer);
     SDL_DestroyWindow(_window);
     SDL_Quit();
-    std::cout << "sdl destroyed" << std::endl;
+    //std::cout << "sdl destroyed" << std::endl;
+    Logging::Logger::Err("Destroyed Game Main");
 }
