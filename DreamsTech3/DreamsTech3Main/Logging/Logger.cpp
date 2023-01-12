@@ -8,8 +8,8 @@
 #include <ostream>
 #include <vector>
 
-//std::vector<LogEntry>
 
+std::vector<Logging::LogEntry> Logging::Logger:: _messages;
 std::string GetCurrentDateTime()
 {
     std::time_t now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
@@ -22,10 +22,20 @@ std::string GetCurrentDateTime()
 
 void Logging::Logger::Log(const std::string& message)
 {
-    std::cout << message << ":" << GetCurrentDateTime() << std::endl;
+
+    LogEntry log;
+    log.Type= Info;
+    log.Message= message + ":" + GetCurrentDateTime();
+    std::cout << log.Message << std::endl;
+
+    _messages.push_back(log);
 }
 
 void Logging::Logger::Err(const std::string& message)
 {
-    std::cout << "\033[32m" << message << ":" << GetCurrentDateTime() << "\033[0m" << std::endl;
+    LogEntry log;
+    log.Type= Info;
+    log.Message= "\033[32m" + message + ":" + GetCurrentDateTime() + "\033[0m";
+    std::cout << log.Message << std::endl;
+    _messages.push_back(log);
 }
