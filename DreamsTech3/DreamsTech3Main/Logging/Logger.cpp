@@ -2,7 +2,6 @@
 
 #include "Logger.h"
 #include <chrono>
-
 #include <ctime>
 #include <iostream>
 #include <ostream>
@@ -22,12 +21,10 @@ std::string GetCurrentDateTime()
 
 void Logging::Logger::Log(const std::string& message)
 {
-
     LogEntry log;
     log.Type= Info;
     log.Message= message + ":" + GetCurrentDateTime();
     std::cout << log.Message << std::endl;
-
     _messages.push_back(log);
 }
 
