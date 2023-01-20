@@ -1,6 +1,8 @@
 ﻿#pragma once
 
 #include <bitset>
+#include <typeindex>
+#include <unordered_map>
 #include <vector>
 
 const unsigned int MAX_COMPONENTS = 32;
@@ -97,6 +99,10 @@ private:
     int numEntities = 0;
 
     std::vector<IPool> componentPools;
+
+
+    std::vector<Signature> entityComponentSignatures;
+    std::unordered_map<std::type_index, System*> systems;
 };
 
 
