@@ -3,12 +3,14 @@
 #include <iostream>
 #include<SDL2/SDL.h>
 
+#include "../ECS/Components/TransformComponent/TransformComponent.h"
 #include "../Logging/Logger.h"
 
 
 Main::Game::Game()
 {
-    //std::cout << "Game Constructor" << std::endl;
+    _isRunning = false;
+    registry = new Registry();
     Logging::Logger::Log("game constructor");
 }
 
@@ -49,7 +51,7 @@ void Main::Game::Initialize()
     _renderer = SDL_CreateRenderer(_window, -1, 0);
     if (!_renderer)
     {
-     //   std::cerr << "err create renderer";
+        //   std::cerr << "err create renderer";
         Logging::Logger::Log("error make renderer");
         return;
     }
@@ -58,6 +60,7 @@ void Main::Game::Initialize()
 
     _isRunning = true;
 }
+
 
 void Main::Game::Run()
 {
@@ -90,12 +93,16 @@ void Main::Game::ProcessInput()
 }
 
 
+void Main::Game::Setup()
+{
+    Entity tank = registry->CreateEntity();
+    Entity truck = registry->CreateEntity();
 
+    registry->AddComponent<TransformComponent>(tank, glm::vec2(10, 30), glm::vec2(1, 1), 0);
+}
 
 void Main::Game::Update()
 {
-    //ADD SOME DELAY
-    //      while (!SDL_TICKS_PASSED(SDL_GetTicks(),_milliscondsPreviousFrame+MILLISECONDS_PER_FRAME));
     int timeToWait = MILLISECONDS_PER_FRAME - (SDL_GetTicks() - _milliscondsPreviousFrame);
 
     if (timeToWait > 0 && timeToWait <= MILLISECONDS_PER_FRAME)
@@ -123,4 +130,5 @@ void Main::Game::Destroy()
     SDL_Quit();
     //std::cout << "sdl destroyed" << std::endl;
     Logging::Logger::Err("Destroyed Game Main");
+    // delete registry;
 }

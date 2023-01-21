@@ -11,7 +11,6 @@ int Entity::GetId() const {
 void Entity::Kill() {
     registry->KillEntity(*this);
 }
-
 void Entity::Tag(const std::string& tag) {
 	registry->TagEntity(*this, tag);
 }
