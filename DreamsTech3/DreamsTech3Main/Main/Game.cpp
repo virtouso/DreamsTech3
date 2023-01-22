@@ -6,8 +6,12 @@
 #include "../ECS/Components/TransformComponent/RigidBodyComponent.h"
 #include "../ECS/Components/TransformComponent/TransformComponent.h"
 #include "../ECS/Systems/MovementSystem.h"
+#include "../ECS/Systems/RenderSystem.h"
 #include "../Logging/Logger.h"
 
+
+class RenderSystem;
+struct SpriteComponent;
 
 Main::Game::Game()
 {
@@ -99,14 +103,15 @@ void Main::Game::ProcessInput()
 
 void Main::Game::Setup()
 {
-
     registry->AddSystem<MovementSystem>();
-
+  //  registry->AddSystem<MovementSystem>();
+    registry->AddSystem<RenderSystem>();
     Entity tank = registry->CreateEntity();
-    Entity truck = registry->CreateEntity();
+  //  Entity truck = registry->CreateEntity();
 
     registry->AddComponent<TransformComponent>(tank, glm::vec2(10, 30), glm::vec2(1, 1), 0);
-    registry->AddComponent<RigidBodyComponent>(tank, glm::vec2(50, 0));
+    registry->AddComponent<RigidBodyComponent>(tank, glm::vec2(50, 10));
+    registry->AddComponent<SpriteComponent>(tank,10,10);
 }
 
 void Main::Game::Update()
@@ -118,12 +123,9 @@ void Main::Game::Update()
         SDL_Delay(timeToWait);
     }
 
-    double deltaTime = (SDL_GetTicks() - _milliscondsPreviousFrame) / 100;
-
-
+    double deltaTime = (SDL_GetTicks() - _milliscondsPreviousFrame) / 1000;
     _milliscondsPreviousFrame = SDL_GetTicks();
-
-    registry->GetSystem<MovementSystem>().Update();
+    registry->GetSystem<MovementSystem>().Update(deltaTime);
     registry->Update();
 }
 
@@ -131,6 +133,9 @@ void Main::Game::Render()
 {
     SDL_SetRenderDrawColor(_renderer, 255, 0, 0, 255);
     SDL_RenderClear(_renderer);
+
+    registry->GetSystem<RenderSystem>().Update(_renderer);
+    
     SDL_RenderPresent(_renderer);
 }
 

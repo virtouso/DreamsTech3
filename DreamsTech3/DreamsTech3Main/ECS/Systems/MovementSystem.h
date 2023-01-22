@@ -14,17 +14,17 @@ public:
     }
 
 
-    void Update()
+    void Update(double deltaTime)
     {
         for (auto entity : GetSystemEntities())
         {
             auto& transform = entity.GetComponent<TransformComponent>();
             const auto rigidbody = entity.GetComponent<RigidBodyComponent>();
 
-            transform.position.x += rigidbody.velocity.x;
-            transform.position.y += rigidbody.velocity.y;
+            transform.position.x += rigidbody.velocity.x * deltaTime;
+            transform.position.y += rigidbody.velocity.y * deltaTime;
 
-            Logging::Logger::Log(std::to_string(transform.position.x));
+            Logging::Logger::Log(std::to_string(transform.position.y));
         }
     }
 };
