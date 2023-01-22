@@ -5,6 +5,7 @@
 
 #include "../ECS/Components/TransformComponent/RigidBodyComponent.h"
 #include "../ECS/Components/TransformComponent/TransformComponent.h"
+#include "../ECS/Systems/MovementSystem.h"
 #include "../Logging/Logger.h"
 
 
@@ -66,6 +67,7 @@ void Main::Game::Initialize()
 
 void Main::Game::Run()
 {
+    Setup();
     while (_isRunning)
     {
         ProcessInput();
@@ -97,6 +99,9 @@ void Main::Game::ProcessInput()
 
 void Main::Game::Setup()
 {
+
+    registry->AddSystem<MovementSystem>();
+
     Entity tank = registry->CreateEntity();
     Entity truck = registry->CreateEntity();
 
@@ -117,6 +122,9 @@ void Main::Game::Update()
 
 
     _milliscondsPreviousFrame = SDL_GetTicks();
+
+    registry->GetSystem<MovementSystem>().Update();
+    registry->Update();
 }
 
 void Main::Game::Render()
