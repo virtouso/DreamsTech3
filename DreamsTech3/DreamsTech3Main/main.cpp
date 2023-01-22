@@ -14,7 +14,7 @@
 
 int main()
 {
-    Main::Game game = Main::Game();
+    Main::Game game ;  
     game.Initialize();
     game.Run();
     game.Destroy();

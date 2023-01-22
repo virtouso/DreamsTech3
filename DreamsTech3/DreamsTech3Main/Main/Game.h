@@ -12,11 +12,10 @@ namespace Main
     class Game
     {
     private:
-        SDL_Window* _window;
-        SDL_Renderer* _renderer;
+        SDL_Window* _window{};
+        SDL_Renderer* _renderer{};
         bool _isRunning;
-        int _milliscondsPreviousFrame;
-
+        int _milliscondsPreviousFrame{};
         std::unique_ptr<Registry> registry;
 
     public:
@@ -30,7 +29,7 @@ namespace Main
         void Render();
         void Destroy();
 
-        int WindowWidth;
-        int WindowHeight;
+        int WindowWidth{};
+        int WindowHeight{};
     };
 }

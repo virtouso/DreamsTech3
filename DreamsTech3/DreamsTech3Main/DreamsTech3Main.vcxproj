@@ -154,6 +154,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ECS\Components\TransformComponent\RigidBodyComponent.cpp" />
     <ClCompile Include="ECS\Components\TransformComponent\TransformComponent.cpp" />
     <ClCompile Include="ECS\ECS.cpp" />
     <ClCompile Include="ECS\Systems\MovementSystem.cpp" />
@@ -162,6 +163,7 @@
     <ClCompile Include="Main\Game.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ECS\Components\TransformComponent\RigidBodyComponent.h" />
     <ClInclude Include="ECS\Components\TransformComponent\TransformComponent.h" />
     <ClInclude Include="ECS\ECS.h" />
     <ClInclude Include="ECS\Systems\MovementSystem.h" />

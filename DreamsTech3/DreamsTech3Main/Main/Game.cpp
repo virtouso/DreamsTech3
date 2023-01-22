@@ -3,6 +3,7 @@
 #include <iostream>
 #include<SDL2/SDL.h>
 
+#include "../ECS/Components/TransformComponent/RigidBodyComponent.h"
 #include "../ECS/Components/TransformComponent/TransformComponent.h"
 #include "../Logging/Logger.h"
 
@@ -10,7 +11,8 @@
 Main::Game::Game()
 {
     _isRunning = false;
-    registry = new Registry();
+    //  registry = new Registry();
+    registry = std::make_unique<Registry>();
     Logging::Logger::Log("game constructor");
 }
 
@@ -99,6 +101,7 @@ void Main::Game::Setup()
     Entity truck = registry->CreateEntity();
 
     registry->AddComponent<TransformComponent>(tank, glm::vec2(10, 30), glm::vec2(1, 1), 0);
+    registry->AddComponent<RigidBodyComponent>(tank, glm::vec2(50, 0));
 }
 
 void Main::Game::Update()
