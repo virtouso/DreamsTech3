@@ -155,6 +155,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssetStore\AssetStore.cpp" />
+    <ClCompile Include="ECS\Components\TransformComponent\BoxColliderComponent.cpp" />
     <ClCompile Include="ECS\ECS.cpp" />
     <ClCompile Include="ECS\Systems\AnimationSystem.cpp" />
     <ClCompile Include="Logging\Logger.cpp" />
@@ -164,13 +165,19 @@
   <ItemGroup>
     <ClInclude Include="AssetStore\AssetStore.h" />
     <ClInclude Include="ECS\Components\TransformComponent\AnimationComponent.h" />
+    <ClInclude Include="ECS\Components\TransformComponent\BoxColliderComponent.h" />
     <ClInclude Include="ECS\Components\TransformComponent\RigidBodyComponent.h" />
     <ClInclude Include="ECS\Components\TransformComponent\SpriteComponent.h" />
     <ClInclude Include="ECS\Components\TransformComponent\TransformComponent.h" />
     <ClInclude Include="ECS\ECS.h" />
     <ClInclude Include="ECS\Systems\AnimationSystem.h" />
+    <ClInclude Include="ECS\Systems\CollisionSystem.h" />
     <ClInclude Include="ECS\Systems\MovementSystem.h" />
     <ClInclude Include="ECS\Systems\RenderSystem.h" />
+    <ClInclude Include="EventBus\Event.h" />
+    <ClInclude Include="EventBus\EventBus.h" />
+    <ClInclude Include="EventBus\Events\CollisionEvent.h" />
+    <ClInclude Include="EventBus\Events\KeyPressedEvent.h" />
     <ClInclude Include="Logging\Logger.h" />
     <ClInclude Include="Main\Game.h" />
   </ItemGroup>
