@@ -1,35 +1,45 @@
 ﻿#pragma once
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_video.h>
+//#include <sol/state.hpp>
 
 #include "../ECS/ECS.h"
+#include "../AssetStore/AssetStore.h"
+#include "../EventBus/EventBus.h"
+
 
 const int FPS = 60;
-const int MILLISECONDS_PER_FRAME = 1000 / FPS;
+const int MILLISECS_PER_FRAME = 1000 / FPS;
 
-namespace Main
-{
-    class Game
-    {
-    private:
-        SDL_Window* _window{};
-        SDL_Renderer* _renderer{};
-        bool _isRunning;
-        int _milliscondsPreviousFrame{};
-        std::unique_ptr<Registry> registry;
+class Game {
+private:
+    bool isRunning;
+    bool isDebug;
+    int millisecsPreviousFrame = 0;
+    SDL_Window* window;
+    SDL_Renderer* renderer;
+    SDL_Rect camera;
 
-    public:
-        Game();
-        ~Game();
-        void Initialize();
-        void Setup();
-        void Run();
-        void ProcessInput();
-        void Update();
-        void Render();
-        void Destroy();
+//    sol::state lua;
+        
+    std::unique_ptr<Registry> registry;
+    std::unique_ptr<AssetStore> assetStore;
+    std::unique_ptr<EventBus> eventBus;
 
-        int WindowWidth{};
-        int WindowHeight{};
-    };
-}
+public:
+    Game();
+    ~Game();
+    void Initialize();
+    void Run();
+    void Setup();
+    void ProcessInput();
+    void Update();
+    void Render();
+    void Destroy();
+
+    static int windowWidth;
+    static int windowHeight;
+    static int mapWidth;
+    static int mapHeight;
+};
+

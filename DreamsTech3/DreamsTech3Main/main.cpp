@@ -1,23 +1,18 @@
+#include <SDL2/SDL.h>
+#undef main
+
 #include<iostream>
-// #define SDL_MAIN_HANDLED
-// #include <SDL2/SDL.h>
-// #include<SDL2/SDL_image.h>
-// #include<SDL2/SDL_mixer.h>
-// #include<SDL2/SDL_ttf.h>
-// #include<glm/glm.hpp>
-// #include<imgui.h>
-// #include <sol/sol.hpp>
 
 
 #include "Main/Game.h"
 
 
-int main()
+ void main()
 {
-    Main::Game game ;  
+    Game game ;  
     game.Initialize();
     game.Run();
     game.Destroy();
 
-    return 0;
+   // return 0;
 }

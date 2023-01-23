@@ -94,9 +94,10 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -111,7 +112,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -155,9 +156,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssetStore\AssetStore.cpp" />
-    <ClCompile Include="ECS\Components\TransformComponent\BoxColliderComponent.cpp" />
     <ClCompile Include="ECS\ECS.cpp" />
-    <ClCompile Include="ECS\Systems\AnimationSystem.cpp" />
     <ClCompile Include="Logging\Logger.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Main\Game.cpp" />
@@ -166,14 +165,30 @@
     <ClInclude Include="AssetStore\AssetStore.h" />
     <ClInclude Include="ECS\Components\TransformComponent\AnimationComponent.h" />
     <ClInclude Include="ECS\Components\TransformComponent\BoxColliderComponent.h" />
+    <ClInclude Include="ECS\Components\TransformComponent\CameraFollowComponent.h" />
+    <ClInclude Include="ECS\Components\TransformComponent\HealthComponent.h" />
+    <ClInclude Include="ECS\Components\TransformComponent\KeyboardControlledComponent.h" />
+    <ClInclude Include="ECS\Components\TransformComponent\ProjectileComponent.h" />
+    <ClInclude Include="ECS\Components\TransformComponent\ProjectileEmitterComponent.h" />
     <ClInclude Include="ECS\Components\TransformComponent\RigidBodyComponent.h" />
+    <ClInclude Include="ECS\Components\TransformComponent\ScriptComponent.h" />
     <ClInclude Include="ECS\Components\TransformComponent\SpriteComponent.h" />
+    <ClInclude Include="ECS\Components\TransformComponent\TextLabelComponent.h" />
     <ClInclude Include="ECS\Components\TransformComponent\TransformComponent.h" />
     <ClInclude Include="ECS\ECS.h" />
     <ClInclude Include="ECS\Systems\AnimationSystem.h" />
+    <ClInclude Include="ECS\Systems\CameraMovementSystem.h" />
     <ClInclude Include="ECS\Systems\CollisionSystem.h" />
+    <ClInclude Include="ECS\Systems\DamageSystem.h" />
+    <ClInclude Include="ECS\Systems\KeyboardControlSystem.h" />
     <ClInclude Include="ECS\Systems\MovementSystem.h" />
+    <ClInclude Include="ECS\Systems\ProjectileEmitSystem.h" />
+    <ClInclude Include="ECS\Systems\ProjectileLifecycleSystem.h" />
+    <ClInclude Include="ECS\Systems\RenderColliderSystem.h" />
+    <ClInclude Include="ECS\Systems\RenderGUISystem.h" />
+    <ClInclude Include="ECS\Systems\RenderHealthBarSystem.h" />
     <ClInclude Include="ECS\Systems\RenderSystem.h" />
+    <ClInclude Include="ECS\Systems\RenderTextSystem.h" />
     <ClInclude Include="EventBus\Event.h" />
     <ClInclude Include="EventBus\EventBus.h" />
     <ClInclude Include="EventBus\Events\CollisionEvent.h" />
